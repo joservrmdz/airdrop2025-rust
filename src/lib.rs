@@ -86,7 +86,7 @@ mod tests {
             signer.pubkey().to_bytes().as_ref()]);
 
         // Define our instruction data
-        let args = UpdateArgs { github: b"joservrmdz".to_vec() };
+        let args = CompleteArgs { github: b"joservrmdz".to_vec() };
 
         // Get recent blockhash
         let blockhash = rpc_client.get_latest_blockhash().expect("Failed to get recentblockhash");
@@ -94,7 +94,7 @@ mod tests {
 
         // Now we can invoke the "complete" function
         let transaction =
-        Turbin3PrereqProgram::update(
+        Turbin3PrereqProgram::complete(
             &[&signer.pubkey(), &prereq, &system_program::id()], &args, Some(&signer.pubkey()),
             &[&signer],
             blockhash );
